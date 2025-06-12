@@ -22,6 +22,10 @@ class Template
         }
     }
 
+    function getParams() {
+        return $this->paramsArray;
+    }
+
     public function getHTML() {
         ob_start();
         extract($this->paramsArray);
