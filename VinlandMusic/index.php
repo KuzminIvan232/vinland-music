@@ -10,6 +10,6 @@ spl_autoload_register(static function ($class) {
 });
 
 
-$router = new core\Router(isset($_GET['route']) ? $_GET['route'] : '');
-$router->run();
-$router->render();
+$core = \core\Core::get();
+$core->run(isset($_GET['route']) ? $_GET['route'] : '');
+$core->done();

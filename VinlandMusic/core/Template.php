@@ -7,6 +7,9 @@ class Template
 
     public $filePath;
     public $paramsArray;
+    public function __set($name, $value) {
+        \core\Core::get()->template->setParam($name, $value);
+    }
     function __construct($filePath) {
         $this->filePath = $filePath;
         $this->paramsArray = [];

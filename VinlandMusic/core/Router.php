@@ -4,12 +4,9 @@ namespace core;
 
 class Router
 {
-
     protected $route;
-    protected $template;
     public function __construct($route) {
         $this->route = $route;
-        $this->template = new \core\Template('app/views/layouts/index.php');
     }
     public function run() {
         $parts = explode('/', $this->route);
@@ -20,13 +17,14 @@ class Router
         if (count($parts) == 1) {
             $parts[1] = 'index';
         }
+        \core\Core::get()->moduleName = $parts[0];
+        \core\Core::get()->actionName = $parts[1];
         $controller = 'app\\controllers\\' . ucfirst($parts[0]) . 'Controller';
         $method = 'action' . ucfirst($parts[1]);
         if (class_exists($controller)) {
             $controllerObject = new $controller();
             if (method_exists($controller, $method)) {
-                $params = $controllerObject->$method();
-                $this->template->setParams($params);
+                return $controllerObject->$method();
             } else {
                 $this->error(404);
             }
@@ -35,8 +33,8 @@ class Router
         }
     }
 
-    public function render() {
-        $this->template->display();
+    public function done() {
+        echo 'hello';
     }
     public function error($code) {
         http_response_code($code);
