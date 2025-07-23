@@ -9,9 +9,15 @@ class Core
     public $template;
     public $moduleName;
     public $actionName;
+    public $db;
     private static $instance;
     private function __construct() {
         $this->template = new \core\Template($this->layoutPath);
+        $host = \core\Config::get()->dbHost;
+        $name = \core\Config::get()->dbName;
+        $login = \core\Config::get()->dbLogin;
+        $password = \core\Config::get()->dbPassword;
+        $this->db = new Database($host, $name, $login, $password);
     }
 
     public function run($route) {
@@ -27,7 +33,7 @@ class Core
 
     public static function get() {
         if (empty(self::$instance)) {
-           self::$instance = new Core();
+           self::$instance = new self();
         }
         return self::$instance;
     }
