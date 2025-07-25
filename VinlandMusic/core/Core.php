@@ -11,7 +11,9 @@ class Core
     public $actionName;
     public $db;
     private static $instance;
-    private function __construct() {
+
+    private function __construct()
+    {
         $this->template = new \core\Template($this->layoutPath);
         $host = \core\Config::get()->dbHost;
         $name = \core\Config::get()->dbName;
@@ -20,20 +22,23 @@ class Core
         $this->db = new Database($host, $name, $login, $password);
     }
 
-    public function run($route) {
+    public function run($route)
+    {
         $this->route = new \core\Router($route);
         $params = $this->route->run();
         $this->template->setParams($params);
     }
 
-    public function done() {
+    public function done()
+    {
         $this->template->display();
         $this->route->done();
     }
 
-    public static function get() {
+    public static function get()
+    {
         if (empty(self::$instance)) {
-           self::$instance = new self();
+            self::$instance = new self();
         }
         return self::$instance;
     }
