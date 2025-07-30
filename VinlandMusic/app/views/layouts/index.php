@@ -26,7 +26,7 @@
             <p>player bar</p>
         </header>
         <main class="main">
-            <h1><?= $Title ?></h1>
+            <h1 class="temp-title""><?= $Title ?></h1>
             <?= $Content ?>
             <!--<div class="song-container">
                 <p>main</p>

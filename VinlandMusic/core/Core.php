@@ -10,6 +10,7 @@ class Core
     public $moduleName;
     public $actionName;
     public $db;
+    public $session;
     private static $instance;
 
     private function __construct()
@@ -20,6 +21,8 @@ class Core
         $login = \core\Config::get()->dbLogin;
         $password = \core\Config::get()->dbPassword;
         $this->db = new Database($host, $name, $login, $password);
+        $this->session = new Session();
+        session_start();
     }
 
     public function run($route)

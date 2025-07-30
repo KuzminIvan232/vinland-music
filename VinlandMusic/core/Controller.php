@@ -14,11 +14,14 @@ class Controller
         $this->template = new Template($path);
     }
 
-    public function render($pathToView)
+    public function render($pathToView = null)
     {
-        $this->template->setTemplateFilePath($pathToView);
-        return [
-            'Content' => $this->template->getHTML()
-        ];
+        if (!empty($pathToView)) {
+            $this->template->setTemplateFilePath($pathToView);
+        } else {
+            return [
+                'Content' => $this->template->getHTML()
+            ];
+        }
     }
 }
