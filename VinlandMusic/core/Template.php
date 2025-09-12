@@ -7,6 +7,7 @@ class Template
 
     public $filePath;
     public $paramsArray;
+    public $controller;
 
     public function __set($name, $value)
     {
@@ -45,6 +46,7 @@ class Template
     {
         ob_start();
         extract($this->paramsArray);
+        $this->controller = \core\Core::get()->controllerObject;
         include $this->filePath;
         $str = ob_get_contents();
         ob_end_clean();

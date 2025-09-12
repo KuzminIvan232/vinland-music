@@ -21,12 +21,10 @@ class Database
         if (!is_array($where) || empty($where)) {
             return '';
         }
-
         $parts = [];
         foreach (array_keys($where) as $field) {
             $parts[] = "{$field} = :{$field}";
         }
-
         return 'WHERE ' . implode(' AND ', $parts);
     }
 
@@ -45,7 +43,9 @@ class Database
         $where_string = $this->where($where);
 
         $sql = "SELECT {$fields_string} FROM {$table} {$where_string}";
+
         $sth = $this->pdo->prepare($sql);
+
         foreach ($where as $key => $value) {
             $sth->bindValue(":{$key}", $value);
         }

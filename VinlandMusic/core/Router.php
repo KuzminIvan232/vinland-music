@@ -23,6 +23,7 @@ class Router
         $method = 'action' . ucfirst($parts[1]);
         if (class_exists($controller)) {
             $controllerObject = new $controller();
+            \core\Core::get()->controllerObject = $controllerObject;
             if (method_exists($controller, $method)) {
                 return $controllerObject->$method();
             } else {

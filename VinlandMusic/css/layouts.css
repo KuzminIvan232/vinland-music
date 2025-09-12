@@ -101,7 +101,7 @@ body {
     flex-direction: column;
 }
 
-.login-form-div {
+.form-div {
     width: 500px;
     height: 350px;
     background-color: #aaaaaa;
@@ -111,6 +111,7 @@ body {
     flex-direction: column;
     border-radius: 15px;
 }
+
 
 .temp-title {
     position: absolute;

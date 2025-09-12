@@ -50,7 +50,7 @@ class Model
 
     public static function findByCondition($conditionArray)
     {
-        $arr = Core::get()->db->select(static::$tableName, '*', [static::$primaryKey => $conditionArray,]);
+        $arr = Core::get()->db->select(static::$tableName, '*', $conditionArray);
         if (count($arr) > 0) {
             return $arr[0];
         } else {

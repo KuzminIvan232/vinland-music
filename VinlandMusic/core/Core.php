@@ -11,6 +11,7 @@ class Core
     public $actionName;
     public $db;
     public $session;
+    public Controller $controllerObject;
     private static $instance;
 
     private function __construct()
@@ -29,7 +30,9 @@ class Core
     {
         $this->route = new \core\Router($route);
         $params = $this->route->run();
-        $this->template->setParams($params);
+        if (!empty($params)) {
+            $this->template->setParams($params);
+        }
     }
 
     public function done()
