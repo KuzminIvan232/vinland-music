@@ -1,4 +1,5 @@
 <?php
-$this->Title = 'home page';
+$this->Title = 'Home';
+$this->Style = "/KursovaBE/css/layouts/index.css";
 ?>
 

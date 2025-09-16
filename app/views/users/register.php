@@ -1,6 +1,8 @@
 <?php
 /** @var string $error_message */
-$this->Title = "Registration";
+$this->GTitle = "Registration";
+$this->Title = "CREATE YOUR ACCOUNT";
+$this->Style = "/KursovaBE/css/layouts/login.css";
 ?>
 
 <div class="form-container">

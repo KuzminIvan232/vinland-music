@@ -12,13 +12,14 @@ class UsersController extends Controller
         if (\app\models\Users::isUserLoggedIn()) {
             $this->redirect('/KursovaBE');
         }
+        \core\Core::get()->setLayoutPath('app/views/layouts/login.php');
         if ($this->isPost) {
             $user = \app\models\Users::verifyLoginAndPassword($this->post->login, $this->post->password);
             if (!empty($user)) {
                 \app\models\Users::loginUser($user);
                 return $this->redirect('/KursovaBE');
             } else {
-                $this->setErrorMessage('wrong login or password');
+                $this->addErrorMessage('wrong login or password');
             }
         }
 
@@ -27,10 +28,9 @@ class UsersController extends Controller
 
     public function actionRegister()
     {
+        \core\Core::get()->setLayoutPath('app/views/layouts/login.php');
         if ($this->isPost) {
-
             $user = \app\models\Users::verifyLogin($this->post->login);
-
             if (!empty($user)) {
                 $this->addErrorMessage('user already exists');
             }

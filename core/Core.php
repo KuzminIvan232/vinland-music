@@ -26,6 +26,12 @@ class Core
         session_start();
     }
 
+    public function setLayoutPath($pathToView)
+    {
+        $this->layoutPath = $pathToView;
+        $this->template = new \core\Template($this->layoutPath);
+    }
+
     public function run($route)
     {
         $this->route = new \core\Router($route);

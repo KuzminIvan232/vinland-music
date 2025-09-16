@@ -1,6 +1,8 @@
 <?php
 /** @var string $error_message */
-$this->Title = "Login";
+$this->GTitle = "Login";
+$this->Title = "PLAY THAT MUSIC";
+$this->Style = "/KursovaBE/css/layouts/login.css";
 ?>
 
 <div class="form-container">
