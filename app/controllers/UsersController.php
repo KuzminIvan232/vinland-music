@@ -34,7 +34,7 @@ class UsersController extends Controller
             if (!empty($user)) {
                 $this->addErrorMessage('user already exists');
             }
-            if(strlen($this->post->login) === 0) {
+            if (strlen($this->post->login) === 0) {
                 $this->addErrorMessage('login is required');
             }
             if (strlen($this->post->password) === 0) {
@@ -55,6 +55,11 @@ class UsersController extends Controller
     {
         \app\models\Users::logoutUser();
         return $this->redirect('/KursovaBE/users/login');
+    }
+
+    public function actionProfile()
+    {
+        return $this->render();
     }
 
 }

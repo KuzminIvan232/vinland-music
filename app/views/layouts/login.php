@@ -2,7 +2,6 @@
 /** @var string $GTitle */
 /** @var string $Title */
 /** @var string $Content */
-/** @var string $Style */
 
 use app\models\Users;
 
@@ -22,7 +21,7 @@ if (empty($Content)) {
 <head>
     <meta charset="UTF-8">
     <title><?= $GTitle ?></title>
-    <link rel="stylesheet" href="<?= $Style ?>">
+    <link rel="stylesheet" href="/KursovaBE/css/layouts/login.css">
 </head>
 <body>
 <div class="body-container">

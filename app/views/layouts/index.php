@@ -18,7 +18,10 @@ if (empty($Content)) {
 <head>
     <meta charset="UTF-8">
     <title><?= $Title ?></title>
+    <link rel="stylesheet" href="/KursovaBE/css/layouts/index.css">
+    <?php if(!empty($Style)) : ?>
     <link rel="stylesheet" href="<?= $Style ?>">
+    <?php endif; ?>
 </head>
 <body>
 <div class="body-container">
@@ -27,7 +30,14 @@ if (empty($Content)) {
             <h1 class="title"><a href="/KursovaBE">VinlandMusic</a></h1>
         </div>
         <aside class="aside">
-
+            <div class="navigation">
+                <?php if (\app\models\Users::isUserLoggedIn()) : ?>
+                    <a href="/KursovaBE/users/profile">Profile</a>
+                <?php else : ?>
+                    <a href="/KursovaBE/users/login">Login</a>
+                    <a href="/KursovaBE/users/register">Register</a>
+                <?php endif; ?>
+            </div>
         </aside>
     </div>
 
@@ -35,14 +45,6 @@ if (empty($Content)) {
         <header class="player-bar-container">
             <div class="player-bar">
 
-            </div>
-            <div class="navigation">
-                <?php if (\app\models\Users::isUserLoggedIn()) : ?>
-                    <a href="/KursovaBE/users/logout">Logout</a>
-                <?php else : ?>
-                    <a href="/KursovaBE/users/login">Login</a>
-                    <a href="/KursovaBE/users/register">Register</a>
-                <?php endif; ?>
             </div>
         </header>
 

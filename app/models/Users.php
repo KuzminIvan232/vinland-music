@@ -74,4 +74,13 @@ class Users extends Model
             return false;
         }
     }
+
+    public static function isProfilePage()
+    {
+        if ($_SERVER['REQUEST_URI'] == '/KursovaBE/users/profile') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
