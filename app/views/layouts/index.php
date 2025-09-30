@@ -32,11 +32,18 @@ if (empty($Content)) {
         <aside class="aside">
             <div class="navigation">
                 <?php if (\app\models\Users::isUserLoggedIn()) : ?>
-                    <a href="/KursovaBE/users/profile">Profile</a>
-                <?php else : ?>
-                    <a href="/KursovaBE/users/login">Login</a>
-                    <a href="/KursovaBE/users/register">Register</a>
-                <?php endif; ?>
+                    <div class="music-navigation">
+                        <a href="/KursovaBE/pages/catalog">Catalog</a>
+                    </div>
+                <?php endif?>
+                <div class="user-navigation">
+                    <?php if (\app\models\Users::isUserLoggedIn()) : ?>
+                        <a href="/KursovaBE/pages/profile">Profile</a>
+                    <?php else : ?>
+                        <a href="/KursovaBE/users/login">Login</a>
+                        <a href="/KursovaBE/users/register">Register</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </aside>
     </div>

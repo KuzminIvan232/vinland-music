@@ -6,10 +6,9 @@ use app\models\Songs;
 use core\Controller;
 use core\Template;
 
-class HomeController extends Controller
+class PagesController extends Controller
 {
-
-    public function actionIndex()
+    public function actionHome()
     {
 
         $db = \core\Core::get()->db;
@@ -26,6 +25,15 @@ class HomeController extends Controller
             'artist' => 'alice_in_chains'
         ]);*/
 
+        return $this->render();
+    }
+    public function actionProfile()
+    {
+        return $this->render();
+    }
+
+    public function actionCatalog()
+    {
         return $this->render();
     }
 

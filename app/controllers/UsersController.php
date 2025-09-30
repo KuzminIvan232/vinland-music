@@ -56,10 +56,4 @@ class UsersController extends Controller
         \app\models\Users::logoutUser();
         return $this->redirect('/KursovaBE/users/login');
     }
-
-    public function actionProfile()
-    {
-        return $this->render();
-    }
-
 }

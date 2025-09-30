@@ -40,6 +40,11 @@ body {
 
 }
 
+a {
+    text-decoration: none;
+    color: #4d596c;
+}
+
 /*MAIN*/
 
 .main-container {
@@ -62,7 +67,7 @@ body {
 .form-div {
     width: 100%;
     height: 45%;
-    background-color: #fff7ce;
+    background-color: #eef5ff;
     display: flex;
     justify-content: center;
     align-items: center;

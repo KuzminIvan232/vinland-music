@@ -11,11 +11,11 @@ class Router
     public function run() {
         $parts = explode('/', $this->route);
         if (strlen($parts[0]) == 0) {
-            $parts[0] = 'home';
-            $parts[1] = 'index';
+            $parts[0] = 'pages';
+            $parts[1] = 'home';
         }
         if (count($parts) == 1) {
-            $parts[1] = 'index';
+            $parts[1] = 'home';
         }
         \core\Core::get()->moduleName = $parts[0];
         \core\Core::get()->actionName = $parts[1];
