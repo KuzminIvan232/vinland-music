@@ -30,15 +30,22 @@ class Controller
         $this->errorMessages = [];
     }
 
-    public function render($pathToView = null)
+    public function render($pathToView = null, $data = null)
     {
         if (!empty($pathToView)) {
             $this->template->setTemplateFilePath($pathToView);
-        } else {
-            return [
-                'Content' => $this->template->getHTML()
-            ];
         }
+
+        if (!empty($data)) {
+            foreach ($data as $key => $value) {
+                $this->template->setParam($key, $value);
+            }
+        }
+
+        return [
+            'Content' => $this->template->getHTML()
+        ];
+
     }
 
     public function redirect($path)
@@ -52,6 +59,7 @@ class Controller
         $this->errorMessages[] = $message;
         $this->template->setParam('error_message', implode('<br />', $this->errorMessages));
     }
+
     public function clearErrorMessage()
     {
         $this->errorMessages = [];

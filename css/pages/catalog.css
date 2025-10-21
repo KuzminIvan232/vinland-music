@@ -9,4 +9,24 @@
 .catalog-title {
     font-size: 4rem;
     margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.track-container {
+    width: 80%;
+    padding: 10px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player .timings {
+    margin-left: auto;
+}
+
+.play-pause-btn {
+    width: 80px;
 }

@@ -2,6 +2,8 @@
 /** @var string $Title */
 /** @var string $Content */
 /** @var string $Style */
+/** @var string $Script */
+/** @var string $track */
 
 use app\models\Users;
 
@@ -10,6 +12,9 @@ if (empty($Title)) {
 }
 if (empty($Content)) {
     $Content = '';
+}
+if (empty($Script)) {
+    $Script = '';
 }
 ?>
 
@@ -34,6 +39,7 @@ if (empty($Content)) {
                 <?php if (\app\models\Users::isUserLoggedIn()) : ?>
                     <div class="music-navigation">
                         <a href="/KursovaBE/pages/catalog">Catalog</a>
+                        <a href="/KursovaBE/pages/upload">Upload</a>
                     </div>
                 <?php endif?>
                 <div class="user-navigation">
@@ -51,23 +57,25 @@ if (empty($Content)) {
     <div class="main-container">
         <header class="player-bar-container">
             <div class="player-bar">
-
+                    <!--<audio class="track" src="<?php /*= $track['src'] */?>"></audio>
+                    <div class="player">
+                        <button class="play-pause-btn">Play</button>
+                        <input type="range" class="seek-bar" value="0" min="0" max="100"/>
+                        <strong><?php /*= $track['title'] */?></strong> - <?php /*= $track['artist'] */?>
+                        <div class="timings">
+                            <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+                        </div>
+                    </div>-->
             </div>
         </header>
 
         <main class="main">
             <?= $Content ?>
-            <!--<div class="song-container">
-                <p>main</p>
-
-                <ul class="song-list">
-                    <li class="song"></li>
-                </ul>
-            </div>-->
         </main>
     </div>
 
     <footer></footer>
 </div>
+<script src="<?= $Script ?>"></script>
 </body>
 </html>

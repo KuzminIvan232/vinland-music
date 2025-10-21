@@ -46,8 +46,10 @@ class Database
 
         $sth = $this->pdo->prepare($sql);
 
-        foreach ($where as $key => $value) {
-            $sth->bindValue(":{$key}", $value);
+        if (is_array($where)) {
+            foreach ($where as $key => $value) {
+                $sth->bindValue(":{$key}", $value);
+            }
         }
         $sth->execute();
         return $sth->fetchAll();
