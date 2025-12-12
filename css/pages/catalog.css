@@ -12,18 +12,21 @@
     margin-bottom: 40px;
 }
 
-.track-container {
+.track {
     width: 80%;
-    padding: 10px;
-}
-
-.player {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.player .timings {
+.track:hover {
+    background-color: #eef5ff;
+    cursor: pointer;
+}
+
+.track .duration {
     margin-left: auto;
 }
 

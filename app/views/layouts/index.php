@@ -2,8 +2,8 @@
 /** @var string $Title */
 /** @var string $Content */
 /** @var string $Style */
+
 /** @var string $Script */
-/** @var string $track */
 
 use app\models\Users;
 
@@ -12,6 +12,9 @@ if (empty($Title)) {
 }
 if (empty($Content)) {
     $Content = '';
+}
+if (empty($Style)) {
+    $Style = '';
 }
 if (empty($Script)) {
     $Script = '';
@@ -24,7 +27,7 @@ if (empty($Script)) {
     <meta charset="UTF-8">
     <title><?= $Title ?></title>
     <link rel="stylesheet" href="/KursovaBE/css/layouts/index.css">
-    <?php if(!empty($Style)) : ?>
+    <?php if (!empty($Style)) : ?>
     <link rel="stylesheet" href="<?= $Style ?>">
     <?php endif; ?>
 </head>
@@ -36,12 +39,14 @@ if (empty($Script)) {
         </div>
         <aside class="aside">
             <div class="navigation">
-                <?php if (\app\models\Users::isUserLoggedIn()) : ?>
-                    <div class="music-navigation">
+                <div class="music-navigation">
+                    <?php if (\app\models\Users::isUserLoggedIn()) : ?>
                         <a href="/KursovaBE/pages/catalog">Catalog</a>
                         <a href="/KursovaBE/pages/upload">Upload</a>
-                    </div>
-                <?php endif?>
+                    <?php else : ?>
+                        <a href="/KursovaBE/pages/catalog">Catalog</a>
+                    <?php endif ?>
+                </div>
                 <div class="user-navigation">
                     <?php if (\app\models\Users::isUserLoggedIn()) : ?>
                         <a href="/KursovaBE/pages/profile">Profile</a>
@@ -56,16 +61,16 @@ if (empty($Script)) {
 
     <div class="main-container">
         <header class="player-bar-container">
-            <div class="player-bar">
-                    <!--<audio class="track" src="<?php /*= $track['src'] */?>"></audio>
-                    <div class="player">
-                        <button class="play-pause-btn">Play</button>
-                        <input type="range" class="seek-bar" value="0" min="0" max="100"/>
-                        <strong><?php /*= $track['title'] */?></strong> - <?php /*= $track['artist'] */?>
-                        <div class="timings">
-                            <span class="current-time">0:00</span> / <span class="duration">0:00</span>
-                        </div>
-                    </div>-->
+            <audio class="pb-track"></audio>
+            <div class="player">
+                <button class="prev-btn">Prev</button>
+                <button class="play-btn">Play</button>
+                <button class="next-btn">Next</button>
+                <input type="range" class="seek-bar" value="0" min="0" max="100"/>
+                <strong class="pb-title">No track selected</strong><span>-</span><span class="pb-artist"></span>
+                <div class="pb-timings">
+                    <span class="pb-current-time">0:00</span> / <span class="pb-duration">0:00</span>
+                </div>
             </div>
         </header>
 
@@ -76,6 +81,9 @@ if (empty($Script)) {
 
     <footer></footer>
 </div>
-<script src="<?= $Script ?>"></script>
+<script type="module" src="/KursovaBE/public/js/songs/player.js"></script>
+<?php if (!empty($Script)) : ?>
+<script type="module" src="<?= $Script ?>"></script>
+<?php endif; ?>
 </body>
 </html>

@@ -44,7 +44,6 @@ class Core
     public function done()
     {
         $this->template->display();
-        $this->route->done();
     }
 
     public static function get()

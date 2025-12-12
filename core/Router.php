@@ -34,9 +34,6 @@ class Router
         }
     }
 
-    public function done() {
-        echo 'hello';
-    }
     public function error($code) {
         http_response_code($code);
         echo $code;

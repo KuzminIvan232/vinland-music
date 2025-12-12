@@ -11,3 +11,26 @@
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+.upload-form {
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-btn {
+    width: 50%;
+    cursor: pointer;
+}
+
+.upload-input {
+    width: 50%;
+}
+
+.upload-file {
+    cursor: pointer;
+}

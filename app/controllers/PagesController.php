@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+require_once 'app/functions/uuid.php';
+
 use app\models\Songs;
 use core\Controller;
 use core\Template;
@@ -10,21 +12,6 @@ class PagesController extends Controller
 {
     public function actionHome()
     {
-
-        $db = \core\Core::get()->db;
-
-        /*$song = new Songs();
-        $song->title = 'nutshell';
-        $song->artist = 'alice_in_chains';
-        $song->duration = '4:02';
-        $song->src = 'jfdsalkfjakl';
-        $song->genre = 'country';
-        $song->save();*/
-
-        /*Songs::deleteByCondition([
-            'artist' => 'alice_in_chains'
-        ]);*/
-
         return $this->render();
     }
 
@@ -84,12 +71,9 @@ class PagesController extends Controller
         }
         return $this->render();
     }
-    function generateUUIDv4(): string {
-        $data = random_bytes(16);
-        // Версія 4 (random)
-        $data[6] = chr((ord($data[6]) & 0x0f) | 0x40);
-        // Варіант RFC 4122
-        $data[8] = chr((ord($data[8]) & 0x3f) | 0x80);
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+
+    public function actionPlaylist()
+    {
+        return $this->render();
     }
 }
