@@ -66,14 +66,15 @@ body {
 }
 
 .user-navigation a {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: auto;
     border-radius: 5px;
-    padding-left: 35%;
+    padding-left: 20%;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 
 .music-navigation {
@@ -85,14 +86,15 @@ body {
 }
 
 .music-navigation a {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: auto;
     border-radius: 5px;
-    padding-left: 35%;
+    padding-left: 20%;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 
 a {
@@ -164,8 +166,30 @@ a {
     width: 40%;
 }
 
+.player-buttons {
+    display: flex;
+    align-items: center;
+}
+
 .play-btn {
-    width: 10%;
+    width: auto;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.next-btn {
+    width: auto;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prev-btn {
+    width: auto;
+    background-color: white;
+    border: none;
+    cursor: pointer;
 }
 
 /* OTHER */

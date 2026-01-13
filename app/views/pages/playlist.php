@@ -1,2 +1,0 @@
-<?php
-$this->Title = "Playlist"

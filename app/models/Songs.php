@@ -35,4 +35,6 @@ class Songs extends Model
         $db = Core::get()->db;
         return $db->select(self::$tableName);
     }
+
+    // change song name or delete methods
 }

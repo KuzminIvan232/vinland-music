@@ -41,8 +41,8 @@ class PagesController extends Controller
 
             if ($file['error'] === 0) {
 
-                $uploadDir = 'public/uploads/';
-                $webPath = '/KursovaBE/public/uploads/';
+                $uploadDir = 'public/uploads/songs';
+                $webPath = '/KursovaBE/public/uploads/songs';
                 $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 
                 // Генеруємо унікальне ім’я через UUID
@@ -72,8 +72,12 @@ class PagesController extends Controller
         return $this->render();
     }
 
-    public function actionPlaylist()
+    public function actionPlaylists()
     {
-        return $this->render();
+        $playlists = \app\models\Playlists::getPlaylists();
+
+        return $this->render(null, [
+            'playlists' => $playlists
+        ]);
     }
 }

@@ -22,8 +22,10 @@ tracks.forEach((track) => {
         pbTrack.src = src;
         pbTitle.textContent = title;
         pbArtist.textContent = artist;
-        playBtn.textContent = 'Pause';
         pbTrack.play();
+        playBtn.innerHTML = '<svg style="display: flex; justify-content: center; align-items: center" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" viewBox="0 0 24 24">\n' +
+            '                       <path d="M8 5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H8Zm7 0a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1Z" clip-rule="evenodd"/>\n' +
+            '                </svg>\n';
 
         localStorage.setItem('currentTrack', JSON.stringify({ src, title, artist }));
     });
