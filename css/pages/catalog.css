@@ -22,8 +22,9 @@
 }
 
 .track:hover {
-    background-color: #eef5ff;
+    background-color: #d2dcf3;
     cursor: pointer;
+
 }
 
 .track .duration {
