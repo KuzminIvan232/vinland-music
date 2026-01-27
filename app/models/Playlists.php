@@ -30,5 +30,4 @@ class Playlists extends Model
         $db = Core::get()->db;
         return $db->select(self::$tableName);
     }
-
 }

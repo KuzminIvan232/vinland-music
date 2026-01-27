@@ -25,6 +25,9 @@ class PlaylistsController extends Controller
                 $filePath = 'public/uploads/images/' . $file['name'];
 
                 if (move_uploaded_file($file['tmp_name'], $filePath)) {
+
+                    resizeAndCrop($filePath, $filePath);
+
                     $playlist = new Playlists();
                     $playlist->title = $title;
                     $playlist->cover_image = $coverImage;
@@ -40,6 +43,11 @@ class PlaylistsController extends Controller
             }
         }
         return $this->render();
+    }
+
+    public function actionAddTrackToPlaylist()
+    {
+
     }
 
 }

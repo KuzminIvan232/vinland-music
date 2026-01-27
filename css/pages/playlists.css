@@ -11,3 +11,31 @@
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+.playlists-container {
+    width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.playlist {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playlist-name {
+
+}
+
+.playlist-image {
+    border-radius: 10px;
+}
