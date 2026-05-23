@@ -1,4 +1,5 @@
 import { formatTime } from '../functions/formatTime.js';
+import { saveRecentlyPlayed } from '../functions/recentlyPlayed.js';
 
 const tracks = document.querySelectorAll('.track');
 const pbTrack = document.querySelector('.pb-track');
@@ -28,8 +29,8 @@ tracks.forEach((track) => {
             '                </svg>\n';
 
         localStorage.setItem('currentTrack', JSON.stringify({ src, title, artist }));
+        saveRecentlyPlayed({ src, title, artist });
     });
-
 });
 
 tracks.forEach(track => {

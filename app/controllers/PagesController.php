@@ -17,10 +17,64 @@ class PagesController extends Controller
 
     public function actionProfile()
     {
-        return $this->render();
+        if (!\app\models\Users::isUserLoggedIn()) {
+            return $this->redirect('/KursovaBE/users/login');
+        }
+
+        $currentUser = \app\models\Users::getCurrentUser();
+
+        if ($this->isPost) {
+            $newLogin = trim($this->post->new_login);
+            $newPass = $this->post->new_password;
+            $newPass2 = $this->post->new_password2;
+
+            if (empty($newLogin)) {
+                $this->addErrorMessage('Login cannot be empty');
+            }
+            elseif ($newLogin !== $currentUser['login']) {
+                $existing = \app\models\Users::verifyLogin($newLogin);
+                if (!empty($existing)) {
+                    $this->addErrorMessage('Login already taken');
+                }
+            }
+
+            $passwordToSave = $currentUser['password'];
+            if (!empty($newPass) || !empty($newPass2)) {
+                if ($newPass !== $newPass2) {
+                    $this->addErrorMessage('New passwords do not match');
+                }
+                elseif (strlen($newPass) < 4) {
+                    $this->addErrorMessage('New password must be at least 4 characters');
+                }
+                else {
+                    $passwordToSave = $newPass;
+                }
+            }
+
+            if (!$this->isErrorMessagesExist()) {
+                \app\models\Users::updateUser(
+                    $currentUser['user_id'],
+                    $newLogin,
+                    $passwordToSave,
+                    $currentUser['role']
+                );
+
+                $updatedUser = $currentUser;
+                $updatedUser['login'] = $newLogin;
+                $updatedUser['password'] = $passwordToSave;
+                \app\models\Users::updateSession($updatedUser);
+                $currentUser = $updatedUser;
+
+                $this->template->setParam('success_message', 'Profile updated successfully');
+            }
+        }
+
+        return $this->render(null, [
+            'current_user' => $currentUser,
+        ]);
     }
 
-    public function actionCatalog() //відображати пісні
+    public function actionCatalog()
     {
         $songs = \app\models\Songs::getSongs();
 
@@ -62,10 +116,12 @@ class PagesController extends Controller
                     $song->file_name = $fileName;
                     $song->addSong($title, $artist, $duration, $src, $genre, $fileName);
 
-                } else {
+                }
+                else {
                     echo "Помилка при збереженні файлу!";
                 }
-            } else {
+            }
+            else {
                 echo "Помилка при завантаженні файлу!";
             }
         }

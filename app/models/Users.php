@@ -57,6 +57,26 @@ class Users extends Model
         $user->save();
     }
 
+    public static function getCurrentUser()
+    {
+        return \core\Core::get()->session->get('user');
+    }
+
+    public static function updateSession($userData)
+    {
+        \core\Core::get()->session->set('user', $userData);
+    }
+
+    public static function updateUser($userId, $login, $password, $role)
+    {
+        $user = new self();
+        $user->user_id = $userId;
+        $user->login = $login;
+        $user->password = $password;
+        $user->role = $role;
+        $user->save();
+    }
+
     public static function isLoginPage()
     {
         if ($_SERVER['REQUEST_URI'] == '/KursovaBE/users/login') {
