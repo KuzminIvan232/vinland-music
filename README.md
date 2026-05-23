@@ -158,13 +158,17 @@ Routes follow the pattern `/{controller}/{action}`:
 
 3. Run the schema above to create tables.
 
-4. Update `config/database.php` with your credentials:
+4. Copy the example config and fill in your credentials:
+   ```bash
+   cp config/database.example.php config/database.php
+   ```
+   Then edit `config/database.php`:
    ```php
    $Config[] = [
        'dbHost'     => 'localhost',
        'dbName'     => 'VinlandMusic',
-       'dbLogin'    => 'VinlandDB',
-       'dbPassword' => 'your_password',
+       'dbLogin'    => 'your_db_user',
+       'dbPassword' => 'your_db_password',
    ];
    ```
 
@@ -196,6 +200,6 @@ Classes are autoloaded by mapping namespace segments to directory paths (PSR-0 c
 This is a coursework prototype. Before any production use, address:
 
 - Passwords are stored in **plain text** — hash them with `password_hash()` / `password_verify()`
-- DB credentials are committed to the repo — move to environment variables or a gitignored config
+- DB credentials — copy `config/database.example.php` to `config/database.php` and fill in real values; the real config is gitignored
 - No CSRF protection on forms
 - File upload validation relies only on the HTML `accept` attribute — add server-side MIME/extension checks

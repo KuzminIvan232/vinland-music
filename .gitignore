@@ -1,0 +1,10 @@
+# DB credentials — never commit the real config
+config/database.php
+
+# Uploaded files
+public/uploads/songs/
+public/uploads/images/
+
+# OS / IDE
+.DS_Store
+.idea/
